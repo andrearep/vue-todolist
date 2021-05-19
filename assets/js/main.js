@@ -5,6 +5,7 @@ const app = new Vue({
 
     data: {
         todoList: [],
+        recycleBin: [],
         toDo: '',
         hide: false
     },
@@ -18,6 +19,12 @@ const app = new Vue({
                 return false;
             }
         },
+
+        todoListToTrash: function todoListToTrash(index) {
+            console.log(index);
+            this.recycleBin.push(this.todoList[index])
+            this.todoList.splice(index, 1)
+        }
 
 
 
