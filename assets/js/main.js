@@ -5,7 +5,8 @@ const app = new Vue({
 
     data: {
         todoList: [],
-        toDo: ''
+        toDo: '',
+        hide: false
     },
     methods: {
         add: function add() {
@@ -13,8 +14,14 @@ const app = new Vue({
                 this.todoList.push(this.toDo);
                 console.log(this.todoList);
                 this.toDo = "";
+            } else {
+                return false;
             }
-        }
+        },
+
+
+
+
     }
 })
 

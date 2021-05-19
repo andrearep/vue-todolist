@@ -3,3 +3,28 @@
     margin: 0;
     box-sizing: border-box;
 }
+.todoList{
+    background-color: aqua;
+    padding: 3rem;
+    width: 500px;
+}
+
+.todo_thing{
+display: flex;
+justify-content:space-between;
+align-items: center;
+border-bottom: 1px solid grey;
+
+}
+.todo_thing  i{
+   margin-left: 20px;
+   font-size: 1.2rem;
+}
+.todo_thing  span{
+  font-size: 2rem;
+  width: 70%;
+}
+.hidden{
+    visibility: hidden;
+}
+
