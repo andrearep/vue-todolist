@@ -3,28 +3,97 @@
     margin: 0;
     box-sizing: border-box;
 }
-.todoList{
-    background-color: aqua;
+body{
+    font-family: 'Dancing Script', cursive;
+}
+h1{
+    text-align: center;
     padding: 3rem;
-    width: 500px;
+    font-size: 3rem;
+    background-color: rgb(241, 250, 222);
+}
+.input{
+    text-align: center;
+    padding: 3rem;
+}
+input{
+    font-size: 1.7rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
 
-.todo_thing{
+.todoList{
+    
+    padding: 15rem 20rem;
+    width: 50%;
+    background-image: url(../img/carta.png);
+    background-size: cover;
+}
+.trashList{
+    background-color: red;
+    padding: 3rem;
+    width: 400px;
+    position: relative;
+}
+.fa-recycle{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.completedList{
+    background-color: green;
+    padding: 3rem;
+    width: 400px;
+}
+
+.todo_thing, .trash_thing,.completed_thing{
 display: flex;
 justify-content:space-between;
 align-items: center;
 border-bottom: 1px solid grey;
-
 }
+
 .todo_thing  i{
    margin-left: 20px;
    font-size: 1.2rem;
+
 }
 .todo_thing  span{
   font-size: 2rem;
   width: 70%;
 }
-.hidden{
-    visibility: hidden;
+.trash_thing  i{
+   margin-left: 20px;
+   font-size: 1.2rem;
+}
+.trash_thing  span{
+  font-size: 2rem;
+  width: 70%;
+}
+.completed_thing  i{
+   margin-left: 20px;
+   font-size: 1.2rem;
+}
+.completed_thing  span{
+  font-size: 2rem;
+  width: 70%;
 }
 
+
+button{
+    font-size: 1.1rem;
+    border-radius: 0.6rem;
+    padding: 0.9rem;
+    background-color: rgb(47, 47, 95);
+    color: white;
+}
+.liste{
+    display: flex;
+    justify-content: center;
+
+}
+h3{
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}

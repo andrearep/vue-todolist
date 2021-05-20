@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -23,35 +26,48 @@
             <input v- type="text" v-model="toDo">
             <button @click="add">Add</button>
         </div>
+        <div class="liste">
 
-        <div class="todoList" v-if="todoList.length!=0">
-            <div @mouseover="hide=true" @mouseleave="hide=false" class="todo_thing" v-for="(todo, index) in todoList">
-                <span> {{todo}}</span>
-                <div v-if="hide" class="icons">
-                    <i @click="todoListToCOmplete(index)" class="fas fa-flag-checkered"></i>
-                    <i @click="todoListToTrash(index)" class="fas fa-trash-alt"></i>
+            <div class="todoList" v-if="todoList.length!=0">
+                <h3>TODO LIST</h3>
+                <div @mouseover="hide=true" @mouseleave="hide=false" class="todo_thing"
+                    v-for="(todo, index) in todoList">
+                    <!-- Inoltre L'utente vuole poter modificare una task giá inserita
+ -->
+                    <span contenteditable="true"> {{todo}}</span>
+                    <div v-if="hide" class="icons">
+                        <i @click="todoListToCOmplete(index)" class="fas fa-flag-checkered"></i>
+                        <i @click="todoListToTrash(index)" class="fas fa-trash-alt"></i>
+                    </div>
                 </div>
+
             </div>
-        </div>
+            <!-- Se non ci sono piu task nella lista, mostrate un messaggio tipo "Nulla da fare" -->
+            <span v-else>Non c'è niente da fare, relax ragazzo</span>
 
+            <div class="trashList" v-if="recycleBin.length!=0">
+                <h3>TRASH</h3>
+                <i @click="emptyTrash" class="fas fa-recycle"></i>emptyTrash
 
-        <div class="trashList" v-if="recycleBin.length!=0">
-            <div @mouseover="hide=true" @mouseleave="hide=false" class="trashthing" v-for=" trash in recycleBin">
-                <span> {{trash}}</span>
-                <div v-if="hide" class="icons">
-                    <i class="fas fa-flag-checkered"></i>
-                    <i class="fas fa-trash-alt"></i>
+                <div @mouseover="hide=true" @mouseleave="hide=false" class="trash_thing" v-for=" trash in recycleBin">
+                    <span> {{trash}}</span>
+                    <div v-if="hide" class="icons">
+                        <i @click=" trashToTodo(index)" class="fas fa-trash-restore"></i>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="completedList" v-if="completedList.length!=0">
-            <div @mouseover="hide=true" @mouseleave="hide=false" class="completed_thing"
-                v-for="(complete, index) in completedList">
-                <span> {{complete}}</span>
-                <div v-if="hide" class="icons">
-                    <i class="fas fa-flag-checkered"></i>
-                    <i class="fas fa-trash-alt"></i>
+            </div>
+
+            <!-- Quando una task é stata completa allora vuole che venga inserita in un'altra colonna tipo "tasks completate" -->
+            <div class="completedList" v-if="completedList.length!=0">
+                <h3>COMPLETED TASK</h3>
+
+                <div @mouseover="hide=true" @mouseleave="hide=false" class="completed_thing"
+                    v-for="(complete, index) in completedList">
+                    <span> {{complete}}</span>
+                    <div v-if="hide" class="icons">
+                        <i @click="completeToTodo(index)" class="fas fa-redo-alt"></i>
+                    </div>
                 </div>
             </div>
         </div>
