@@ -27,20 +27,32 @@
             <button @click="add">Add</button>
         </div>
         <div class="liste">
+            <div class="lista_todo_complete" v-if="todoList.length!=0||completedList.length!=0">
 
-            <div class="todoList" v-if="todoList.length!=0">
-                <h3>TODO LIST</h3>
-                <div @mouseover="hide=true" @mouseleave="hide=false" class="todo_thing"
-                    v-for="(todo, index) in todoList">
-                    <!-- Inoltre L'utente vuole poter modificare una task giá inserita
- -->
-                    <span contenteditable="true"> {{todo}}</span>
-                    <div v-if="hide" class="icons">
-                        <i @click="todoListToCOmplete(index)" class="fas fa-flag-checkered"></i>
-                        <i @click="todoListToTrash(index)" class="fas fa-trash-alt"></i>
+                <div class="todo_list" v-if="todoList.length!=0">
+                    <h3>TODO LIST</h3>
+                    <div @mouseover="hide=true" @mouseleave="hide=false" class="todo_thing"
+                        v-for="(todo, index) in todoList">
+                        <!-- Inoltre L'utente vuole poter modificare una task giá inserita-->
+                        <span contenteditable="true"> {{todo}}</span>
+                        <div v-if="hide" class="icons">
+                            <i @click="todoListToCOmplete(index)" class="fas fa-flag-checkered"></i>
+                            <i @click="todoListToTrash(index)" class="fas fa-trash-alt"></i>
+                        </div>
                     </div>
                 </div>
+                <!-- Quando una task é stata completa allora vuole che venga inserita in un'altra colonna tipo "tasks completate" -->
+                <div class="completedList" v-if="completedList.length!=0">
+                    <h3>COMPLETED TASK</h3>
 
+                    <div @mouseover="hide=true" @mouseleave="hide=false" class="completed_thing"
+                        v-for="(complete, index) in completedList">
+                        <span> {{complete}}</span>
+                        <div v-if="hide" class="icons">
+                            <i @click="completeToTodo(index)" class="fas fa-redo-alt"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Se non ci sono piu task nella lista, mostrate un messaggio tipo "Nulla da fare" -->
             <span v-else>Non c'è niente da fare, relax ragazzo</span>
@@ -55,23 +67,12 @@
                         <i @click=" trashToTodo(index)" class="fas fa-trash-restore"></i>
                     </div>
                 </div>
-
-            </div>
-
-            <!-- Quando una task é stata completa allora vuole che venga inserita in un'altra colonna tipo "tasks completate" -->
-            <div class="completedList" v-if="completedList.length!=0">
-                <h3>COMPLETED TASK</h3>
-
-                <div @mouseover="hide=true" @mouseleave="hide=false" class="completed_thing"
-                    v-for="(complete, index) in completedList">
-                    <span> {{complete}}</span>
-                    <div v-if="hide" class="icons">
-                        <i @click="completeToTodo(index)" class="fas fa-redo-alt"></i>
-                    </div>
-                </div>
             </div>
         </div>
+
+
     </div>
+
     <!-- VUE CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="./assets/js/main.js"></script>
