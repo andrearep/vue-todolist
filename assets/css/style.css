@@ -21,14 +21,25 @@ input{
     border-radius: 0.5rem;
     padding: 0.5rem;
 }
-
-.todoList{
-    
+.lista_todo_complete{
     padding: 15rem 20rem;
     width: 50%;
-    background-image: url(../img/carta.png);
+    background-image: url(../img/carta.jpg);
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.todo_list, .completedList{
+  
+    padding: 3rem;
+    width: 600px;
+}
+
+
+  
 .trashList{
     background-color: red;
     padding: 3rem;
@@ -40,11 +51,7 @@ input{
     right: 10px;
     top: 10px;
 }
-.completedList{
-    background-color: green;
-    padding: 3rem;
-    width: 400px;
-}
+
 
 .todo_thing, .trash_thing,.completed_thing{
 display: flex;
